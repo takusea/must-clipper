@@ -4,9 +4,10 @@ import { EditAttributeForm } from "./features/edit-attribute/EditAttributeForm";
 import { useVideoMetadatas } from "./features/video-metadata/useVideoMetadatas";
 import { VideoPlayer } from "./features/video-player/VideoPlayer";
 import { Button } from "./components/Button";
-import type { PageAttribute } from "./features/edit-attribute/type";
+import type { PageAttribute } from "./features/page-attribute/type";
 import { FloatingActionButton } from "./components/FloatingActionButton";
 import { IconEdit, IconShare } from "@tabler/icons-react";
+import { usePageAttributes } from "./features/page-attribute/usePageAttribute";
 
 function App() {
 	const {
@@ -14,27 +15,25 @@ function App() {
 		addMetadata,
 		removeMetadata,
 		editMetadata,
-		toUrlParam,
+		videoMetadatasToUrlParam,
 	} = useVideoMetadatas();
+	const { pageAttribute, setPageAttribute, pageAttributeToUrlParam } =
+		usePageAttributes();
 	const [isEditing, setIsEditing] = useState(false);
-	const [attr, setAttr] = useState<PageAttribute>({
-		title: "",
-		description: "",
-	});
 
 	function handleShare() {
 		if (!navigator.clipboard) {
 			return;
 		}
 
-		const url = `${window.location.origin}${window.location.pathname}?${toUrlParam()}`;
+		const url = `${window.location.origin}${window.location.pathname}?${pageAttributeToUrlParam()}${videoMetadatasToUrlParam()}`;
 
 		navigator.clipboard.writeText(url);
 		console.log(`copied! ${url}`);
 	}
 
 	function handleAttrSubmit(attr: PageAttribute) {
-		setAttr(attr);
+		setPageAttribute(attr);
 		setIsEditing(false);
 	}
 
@@ -45,8 +44,8 @@ function App() {
 					<>
 						<div className="flex gap-1 justify-between">
 							<h1 className="text-2xl font-bold">
-								{attr.title ? (
-									attr.title
+								{pageAttribute.title ? (
+									pageAttribute.title
 								) : (
 									<span className="text-gray-400">タイトルなし</span>
 								)}
@@ -59,11 +58,11 @@ function App() {
 								編集
 							</Button>
 						</div>
-						<p className="">{attr.description}</p>
+						<p className="">{pageAttribute.description}</p>
 					</>
 				) : (
 					<EditAttributeForm
-						attr={attr}
+						attr={pageAttribute}
 						onSubmit={handleAttrSubmit}
 						onCancel={() => setIsEditing(false)}
 					/>

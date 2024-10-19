@@ -10,15 +10,17 @@ export function useVideoMetadatas() {
 		const query = window.location.search;
 		const params = new URLSearchParams(query);
 
-		const metadatas: VideoMetadata[] = Array.from(params).map(([_, value]) => {
-			const arr = value.split(" ");
-			return {
-				type: arr[0],
-				id: arr[1],
-				seconds: arr[2] ?? Number(arr[2]),
-				title: arr[3] ?? arr[3],
-			} as unknown as VideoMetadata;
-		});
+		const metadatas: VideoMetadata[] = Array.from(params)
+			.filter(([key, _]) => !Number.isNaN(Number.parseInt(key)))
+			.map(([_, value]) => {
+				const arr = value.split(" ");
+				return {
+					type: arr[0],
+					id: arr[1],
+					seconds: arr[2] ?? Number(arr[2]),
+					title: arr[3] ?? arr[3],
+				} as unknown as VideoMetadata;
+			});
 
 		setVideoMetadatas(metadatas);
 	}
@@ -45,7 +47,7 @@ export function useVideoMetadatas() {
 		);
 	}
 
-	function toUrlParam() {
+	function videoMetadatasToUrlParam() {
 		return videoMetadatas
 			.map((metadata, index) => {
 				const title = metadata.title ? `+${metadata.title}` : "";
@@ -59,6 +61,6 @@ export function useVideoMetadatas() {
 		addMetadata,
 		removeMetadata,
 		editMetadata,
-		toUrlParam,
+		videoMetadatasToUrlParam,
 	};
 }

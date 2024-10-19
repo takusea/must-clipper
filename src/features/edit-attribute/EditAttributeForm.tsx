@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { PageAttribute } from "./type";
+import type { PageAttribute } from "../page-attribute/type";
 import { TextField } from "../../components/TextField";
 import { Button } from "../../components/Button";
 import { TextArea } from "../../components/TextArea";

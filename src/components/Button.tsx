@@ -1,16 +1,20 @@
-import type { IconNode } from "@tabler/icons-react";
-import type { MouseEventHandler } from "react";
+import type { Icon, IconProps } from "@tabler/icons-react";
+import type {
+	ForwardRefExoticComponent,
+	MouseEventHandler,
+	RefAttributes,
+} from "react";
 
 type Props = {
 	children: string;
-	icon?: IconNode;
+	icon?: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
 	iconOnly?: boolean;
 	variant?: "primary" | "default" | "warning";
 	onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
 export function Button(props: Props) {
-	let color;
+	let color: string;
 	switch (props.variant) {
 		case "primary":
 			color = "bg-teal-200 border border-black/20 hover:bg-teal-300";
@@ -28,10 +32,10 @@ export function Button(props: Props) {
 			type="button"
 			className={`font-bold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
 			onClick={props.onClick}
-			aria-label={props.iconOnly && props.children}
+			aria-label={props.iconOnly ? props.children : ""}
 		>
-			{props.icon}
-			<span className={props.iconOnly && "hidden"}>{props.children}</span>
+			{props.icon && <props.icon />}
+			<span className={props.iconOnly ? "hidden" : ""}>{props.children}</span>
 		</button>
 	);
 }

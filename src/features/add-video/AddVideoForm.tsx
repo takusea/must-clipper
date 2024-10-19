@@ -39,7 +39,7 @@ export function AddVideoForm(props: Props) {
 				onChange={(event) => setUrl(event.target.value)}
 				placeholder="YouTube Live or Twitch URL"
 			/>
-			<Button icon={<IconPlus />} iconOnly onClick={handleClick}>
+			<Button icon={IconPlus} iconOnly onClick={handleClick}>
 				追加
 			</Button>
 		</div>

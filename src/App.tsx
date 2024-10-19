@@ -53,7 +53,7 @@ function App() {
 							</h1>
 							<Button
 								onClick={() => setIsEditing(true)}
-								icon={<IconEdit />}
+								icon={IconEdit}
 								iconOnly
 							>
 								編集
@@ -78,7 +78,7 @@ function App() {
 				/>
 			))}
 			<div className="mt-auto sticky bottom-0 flex flex-col gap-4 justify-end">
-				<FloatingActionButton onClick={handleShare} icon={<IconShare />}>
+				<FloatingActionButton onClick={handleShare} icon={IconShare}>
 					共有
 				</FloatingActionButton>
 				<div className="w-full bg-white border-t border-gray-200 py-4">

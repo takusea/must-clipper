@@ -5,9 +5,15 @@ export function parseUrlToYouTubeMetadata(url: string): VideoMetadata {
 	const query = url.split("?")[1];
 	const params = new URLSearchParams(query);
 
-	const id = query.includes("live")
-		? url.match(/\/([^\/?]+)\?/)
-		: params.get("v");
+	let id: string | null = null;
+	if (query.includes("live")) {
+		const match = url.match(/\/([^\/?]+)\?/);
+		if (match) {
+			id = match[0];
+		}
+	} else {
+		id = params.get("v");
+	}
 	const seconds = params.get("t");
 
 	if (!id) {

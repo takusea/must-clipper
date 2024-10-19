@@ -1,21 +1,19 @@
+import { type ChangeEvent, useState } from "react";
 import { IconCheck, IconTrash } from "@tabler/icons-react";
-import { ChangeEvent, useState } from "react";
 import { Button } from "../../components/Button";
 import { TextField } from "../../components/TextField";
 import type { VideoMetadata } from "../video-metadata/type";
-
-export type VideoForm = { title?: string; id?: string; seconds?: number };
 
 type Props = {
 	metadata: VideoMetadata;
 	onCancel: () => void;
 	onDelete(id: string): void;
-	onSubmit: (id: string, metadata: VideoForm) => void;
+	onSubmit: (id: string, metadata: VideoMetadata) => void;
 };
 
 export function VideoPlayerForm(props: Props) {
 	const [title, setTitle] = useState(props.metadata.title ?? "");
-	const [id, setId] = useState(props.metadata.id);
+	const [id] = useState(props.metadata.id);
 	const [seconds, setSeconds] = useState(props.metadata.seconds);
 
 	function toDisplayTime(seconds: number) {
@@ -62,14 +60,14 @@ export function VideoPlayerForm(props: Props) {
 				開始位置
 				<TextField
 					id={`seconds-${id}`}
-					value={toDisplayTime(seconds)}
+					value={toDisplayTime(seconds ?? 0)}
 					onChange={handleTimeChange}
 				/>
 			</label>
 			<div className="flex-grow flex items-center gap-2 w-full">
 				<div className="flex-grow">
 					<Button
-						icon={<IconTrash />}
+						icon={IconTrash}
 						iconOnly
 						variant="warning"
 						onClick={() => props.onDelete(props.metadata.id)}
@@ -79,10 +77,11 @@ export function VideoPlayerForm(props: Props) {
 				</div>
 				<Button onClick={props.onCancel}>キャンセル</Button>
 				<Button
-					icon={<IconCheck />}
+					icon={IconCheck}
 					variant="primary"
 					onClick={() =>
 						props.onSubmit(props.metadata.id, {
+							type: props.metadata.type,
 							id,
 							title,
 							seconds,

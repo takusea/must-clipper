@@ -39,7 +39,7 @@ export function EditAttributeForm(props: Props) {
 				<Button onClick={props.onCancel}>キャンセル</Button>
 				<Button
 					variant="primary"
-					icon={<IconCheck />}
+					icon={IconCheck}
 					onClick={() => props.onSubmit({ title, description })}
 				>
 					確定

@@ -6,5 +6,5 @@ export function formatUrlFromYouTubeMetadata(metadata: VideoMetadata) {
 }
 
 export function formatUrlFromTwitchMetadata(metadata: VideoMetadata) {
-	return `https://player.twitch.tv/?video=${metadata.id}&parent=${window.location.hostname}&time=${formatTimeFromSeconds(metadata.seconds)}&autoplay=false`;
+	return `https://player.twitch.tv/?video=${metadata.id}&parent=${window.location.hostname}&time=${formatTimeFromSeconds(metadata.seconds ?? 0)}&autoplay=false`;
 }

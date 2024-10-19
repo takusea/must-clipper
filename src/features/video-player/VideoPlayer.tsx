@@ -5,7 +5,7 @@ import {
 	formatUrlFromTwitchMetadata,
 	formatUrlFromYouTubeMetadata,
 } from "./formatUrlFromMetadata";
-import { VideoPlayerForm, type VideoForm } from "./VideoPlayerForm";
+import { VideoPlayerForm } from "./VideoPlayerForm";
 import { Button } from "../../components/Button";
 import {
 	IconBrandTwitch,
@@ -14,7 +14,7 @@ import {
 } from "@tabler/icons-react";
 
 type Props = {
-	onChange: (id: string, form: VideoForm) => void;
+	onChange: (id: string, metadata: VideoMetadata) => void;
 	metadata: VideoMetadata;
 	onDelete: (id: string) => void;
 };
@@ -23,7 +23,7 @@ export function VideoPlayer(props: Props) {
 	const [isEditing, setIsEditing] = useState(false);
 
 	let videoIframe: ReactNode;
-	let icon: IconNode;
+	let icon: ReactNode;
 	switch (props.metadata.type) {
 		case "yt":
 			videoIframe = <YouTubeVideoViewer {...props} />;
@@ -40,7 +40,7 @@ export function VideoPlayer(props: Props) {
 		props.onDelete(id);
 	}
 
-	function handleSubmit(id: string, metadata: VideoForm) {
+	function handleSubmit(id: string, metadata: VideoMetadata) {
 		setIsEditing(false);
 		props.onChange(id, metadata);
 	}
@@ -59,11 +59,7 @@ export function VideoPlayer(props: Props) {
 								<span className="text-gray-400">タイトルなし</span>
 							)}
 						</h2>
-						<Button
-							onClick={() => setIsEditing(true)}
-							icon={<IconEdit />}
-							iconOnly
-						>
+						<Button onClick={() => setIsEditing(true)} icon={IconEdit} iconOnly>
 							編集
 						</Button>
 					</div>

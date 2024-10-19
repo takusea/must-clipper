@@ -17,13 +17,13 @@ export function useVideoMetadatas() {
 				id: arr[1],
 				seconds: arr[2] ?? Number(arr[2]),
 				title: arr[3] ?? arr[3],
-			};
+			} as unknown as VideoMetadata;
 		});
 
 		setVideoMetadatas(metadatas);
 	}
 
-	function editMetadata(id: string, newMetadata) {
+	function editMetadata(id: string, newMetadata: VideoMetadata) {
 		setVideoMetadatas((metadatas) =>
 			metadatas.map((metadata) =>
 				metadata.id === id ? { ...metadata, ...newMetadata } : metadata,

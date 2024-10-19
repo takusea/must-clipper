@@ -1,0 +1,37 @@
+import type { IconNode } from "@tabler/icons-react";
+import type { MouseEventHandler } from "react";
+
+type Props = {
+	children: string;
+	icon?: IconNode;
+	iconOnly?: boolean;
+	variant?: "primary" | "default" | "warning";
+	onClick: MouseEventHandler<HTMLButtonElement>;
+};
+
+export function Button(props: Props) {
+	let color;
+	switch (props.variant) {
+		case "primary":
+			color = "bg-teal-200 border border-black/20 hover:bg-teal-300";
+			break;
+		case "warning":
+			color = "bg-red-500 text-white border border-black/20 hover:bg-red-600";
+			break;
+		default:
+			color = "hover:bg-gray-500/10";
+			break;
+	}
+
+	return (
+		<button
+			type="button"
+			className={`font-bold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
+			onClick={props.onClick}
+			aria-label={props.iconOnly && props.children}
+		>
+			{props.icon}
+			<span className={props.iconOnly && "hidden"}>{props.children}</span>
+		</button>
+	);
+}

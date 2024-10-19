@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { AddVideoForm } from "./features/add-video/AddVideoForm";
-import { EditAttributeForm } from "./features/edit-attribute/EditAttributeForm";
+import { VideoAddForm } from "./features/video-metadata/VideoAddForm";
+import { PageAttributeEditForm } from "./features/page-attribute/PageAttributeEditForm";
 import { useVideoMetadatas } from "./features/video-metadata/useVideoMetadatas";
 import { VideoPlayer } from "./features/video-player/VideoPlayer";
 import { Button } from "./components/Button";
@@ -61,7 +61,7 @@ function App() {
 						<p className="">{pageAttribute.description}</p>
 					</>
 				) : (
-					<EditAttributeForm
+					<PageAttributeEditForm
 						attr={pageAttribute}
 						onSubmit={handleAttrSubmit}
 						onCancel={() => setIsEditing(false)}
@@ -81,7 +81,7 @@ function App() {
 					共有
 				</FloatingActionButton>
 				<div className="w-full bg-white border-t border-gray-200 py-4">
-					<AddVideoForm onAdd={addMetadata} />
+					<VideoAddForm onAdd={addMetadata} />
 				</div>
 			</div>
 		</div>

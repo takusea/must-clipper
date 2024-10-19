@@ -11,7 +11,7 @@ type Props = {
 	onSubmit: (id: string, metadata: VideoMetadata) => void;
 };
 
-export function VideoPlayerForm(props: Props) {
+export function VideoPlayerEditForm(props: Props) {
 	const [title, setTitle] = useState(props.metadata.title ?? "");
 	const [id] = useState(props.metadata.id);
 	const [seconds, setSeconds] = useState(props.metadata.seconds);

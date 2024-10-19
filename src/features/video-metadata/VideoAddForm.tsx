@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { VideoMetadata } from "../video-metadata/type";
+import type { VideoMetadata } from "./type";
 import {
 	parseUrlToTwitchMetadata,
 	parseUrlToYouTubeMetadata,
@@ -12,7 +12,7 @@ type Props = {
 	onAdd: (metadata: VideoMetadata) => void;
 };
 
-export function AddVideoForm(props: Props) {
+export function VideoAddForm(props: Props) {
 	const [url, setUrl] = useState<string>("");
 
 	const handleClick = () => {

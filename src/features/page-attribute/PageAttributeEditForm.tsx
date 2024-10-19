@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { PageAttribute } from "../page-attribute/type";
+import type { PageAttribute } from "./type";
 import { TextField } from "../../components/TextField";
 import { Button } from "../../components/Button";
 import { TextArea } from "../../components/TextArea";
@@ -11,7 +11,7 @@ type Props = {
 	onSubmit: (attr: PageAttribute) => void;
 };
 
-export function EditAttributeForm(props: Props) {
+export function PageAttributeEditForm(props: Props) {
 	const [title, setTitle] = useState<string>(props.attr.title);
 	const [description, setDescription] = useState<string>(
 		props.attr.description,

@@ -5,7 +5,7 @@ import {
 	formatUrlFromTwitchMetadata,
 	formatUrlFromYouTubeMetadata,
 } from "./formatUrlFromMetadata";
-import { VideoPlayerForm } from "./VideoPlayerForm";
+import { VideoPlayerEditForm } from "./VideoPlayerEditForm";
 import { Button } from "../../components/Button";
 import {
 	IconBrandTwitch,
@@ -65,7 +65,7 @@ export function VideoPlayer(props: Props) {
 					</div>
 				</>
 			) : (
-				<VideoPlayerForm
+				<VideoPlayerEditForm
 					metadata={props.metadata}
 					onCancel={() => setIsEditing(false)}
 					onDelete={handleDelete}

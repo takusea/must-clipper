@@ -1,4 +1,4 @@
-import { type ChangeEvent, useEffect, useState } from "react";
+import { type ChangeEvent, useState } from "react";
 import { IconCheck, IconTrash } from "@tabler/icons-react";
 import { Button } from "../../components/Button";
 import { TextField } from "../../components/TextField";

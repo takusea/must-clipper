@@ -14,16 +14,19 @@ export function usePageAttributes() {
 		const params = new URLSearchParams(query);
 
 		setPageAttribute({
-			title: params.get("title") ?? "",
-			description: params.get("description") ?? "",
+			title: params.get("t") ?? "",
+			description: params.get("d") ?? "",
 		});
 	}
 
 	function pageAttributeToUrlParam() {
-		const title = pageAttribute?.title ? `title=${pageAttribute.title}&` : "";
-		const description = pageAttribute?.title
-			? `description=${pageAttribute.description}&`
+		const title = pageAttribute?.title
+			? `t=${encodeURIComponent(pageAttribute.title)}&`
 			: "";
+		const description = pageAttribute?.title
+			? `d=${encodeURIComponent(pageAttribute.description)}&`
+			: "";
+
 		return `${title}${description}`;
 	}
 

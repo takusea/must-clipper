@@ -2,18 +2,12 @@ import { parseTimeToSeconds } from "../../util/timeFormatter";
 import type { VideoMetadata } from "../video-metadata/type";
 
 export function parseUrlToYouTubeMetadata(url: string): VideoMetadata {
-	const query = url.split("?")[1];
+	const query = url.includes("live")
+		? url.replace("?", "&").replace("live/", "watch?v=").split("?")[1]
+		: url.split("?")[1];
 	const params = new URLSearchParams(query);
 
-	let id: string | null = null;
-	if (query.includes("live")) {
-		const match = url.match(/\/([^\/?]+)\?/);
-		if (match) {
-			id = match[0];
-		}
-	} else {
-		id = params.get("v");
-	}
+	const id = params.get("v");
 	const seconds = params.get("t");
 
 	if (!id) {
@@ -24,7 +18,11 @@ export function parseUrlToYouTubeMetadata(url: string): VideoMetadata {
 		type: "yt",
 		id,
 		seconds:
-			seconds !== null ? Number(seconds.slice(0, seconds.length - 1)) : 0,
+			seconds !== null
+				? seconds.includes("s")
+					? Number(seconds.slice(0, seconds.length - 1))
+					: Number(seconds)
+				: 0,
 	};
 }
 

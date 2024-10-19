@@ -1,8 +1,9 @@
-import { type ChangeEvent, useState } from "react";
+import { type ChangeEvent, useEffect, useState } from "react";
 import { IconCheck, IconTrash } from "@tabler/icons-react";
 import { Button } from "../../components/Button";
 import { TextField } from "../../components/TextField";
 import type { VideoMetadata } from "../video-metadata/type";
+import { TimeField } from "../../components/TimeField";
 
 type Props = {
 	metadata: VideoMetadata;
@@ -36,7 +37,7 @@ export function VideoPlayerEditForm(props: Props) {
 
 		const isContainNaN =
 			Number.isNaN(hours) || Number.isNaN(minutes) || Number.isNaN(seconds);
-		const isOvered = minutes > 60 || seconds > 60;
+		const isOvered = minutes >= 60 || seconds >= 60;
 		if (isContainNaN || isOvered) {
 			return;
 		}
@@ -58,7 +59,7 @@ export function VideoPlayerEditForm(props: Props) {
 				htmlFor={`seconds-${id}`}
 			>
 				開始位置
-				<TextField
+				<TimeField
 					id={`seconds-${id}`}
 					value={toDisplayTime(seconds ?? 0)}
 					onChange={handleTimeChange}

@@ -47,7 +47,9 @@ function App() {
 								{pageAttribute.title ? (
 									pageAttribute.title
 								) : (
-									<span className="text-gray-400">タイトルなし</span>
+									<span className="text-gray-400 select-none">
+										タイトルなし
+									</span>
 								)}
 							</h1>
 							<Button

@@ -56,7 +56,7 @@ export function VideoPlayer(props: Props) {
 							{props.metadata.title ? (
 								props.metadata.title
 							) : (
-								<span className="text-gray-400">タイトルなし</span>
+								<span className="text-gray-400 select-none">タイトルなし</span>
 							)}
 						</h2>
 						<Button onClick={() => setIsEditing(true)} icon={IconEdit} iconOnly>

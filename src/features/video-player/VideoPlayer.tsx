@@ -52,7 +52,7 @@ export function VideoPlayer(props: Props) {
 				<>
 					<div className="flex gap-2 items-center">
 						<span className="text-gray-400 flex-shrink-0">{icon}</span>
-						<h2 className="flex-grow text-xl font-bold">
+						<h2 className="flex-grow text-lg font-bold">
 							{props.metadata.title ? (
 								props.metadata.title
 							) : (

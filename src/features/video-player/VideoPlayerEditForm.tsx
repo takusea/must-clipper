@@ -4,6 +4,7 @@ import { Button } from "../../components/Button";
 import { TextField } from "../../components/TextField";
 import type { VideoMetadata } from "../video-metadata/type";
 import { TimeField } from "../../components/TimeField";
+import { Label } from "../../components/Label";
 
 type Props = {
 	metadata: VideoMetadata;
@@ -54,17 +55,14 @@ export function VideoPlayerEditForm(props: Props) {
 					onChange={(event) => setTitle(event.target.value)}
 				/>
 			</div>
-			<label
-				className="flex-grow flex items-center gap-2"
-				htmlFor={`seconds-${id}`}
-			>
-				開始位置
+			<div className="flex-grow flex items-center gap-2">
+				<Label htmlFor={`seconds-${id}`}>開始位置</Label>
 				<TimeField
 					id={`seconds-${id}`}
 					value={toDisplayTime(seconds ?? 0)}
 					onChange={handleTimeChange}
 				/>
-			</label>
+			</div>
 			<div className="flex-grow flex items-center gap-2 w-full">
 				<div className="flex-grow">
 					<Button

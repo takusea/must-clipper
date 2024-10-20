@@ -7,6 +7,7 @@ import {
 import { TextField } from "../../components/TextField";
 import { Button } from "../../components/Button";
 import { IconPlus } from "@tabler/icons-react";
+import { Label } from "../../components/Label";
 
 type Props = {
 	onAdd: (metadata: VideoMetadata) => void;
@@ -30,9 +31,7 @@ export function VideoAddForm(props: Props) {
 
 	return (
 		<div className="flex gap-2 items-center">
-			<label className="font-bold" htmlFor="add-url">
-				URL
-			</label>
+			<Label htmlFor="add-url">URL</Label>
 			<TextField
 				id="add-url"
 				value={url}

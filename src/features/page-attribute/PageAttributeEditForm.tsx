@@ -4,6 +4,7 @@ import { TextField } from "../../components/TextField";
 import { Button } from "../../components/Button";
 import { TextArea } from "../../components/TextArea";
 import { IconCheck } from "@tabler/icons-react";
+import { Label } from "../../components/Label";
 
 type Props = {
 	attr: PageAttribute;
@@ -19,17 +20,15 @@ export function PageAttributeEditForm(props: Props) {
 
 	return (
 		<div className="flex flex-col items-stretch">
-			<label className="font-bold" htmlFor="clip-name">
-				クリップ名
-			</label>
+			<Label htmlFor="clip-name">クリップ名</Label>
 			<TextField
 				id="clip-name"
 				value={title}
 				onChange={(event) => setTitle(event.target.value)}
 			/>
-			<label className="font-bold mt-4" htmlFor="description">
-				クリップの説明
-			</label>
+			<div className="mt-4">
+				<Label htmlFor="description">クリップの説明</Label>
+			</div>
 			<TextArea
 				id="description"
 				value={description}

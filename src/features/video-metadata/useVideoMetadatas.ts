@@ -13,7 +13,7 @@ export function useVideoMetadatas() {
 		const metadatas: VideoMetadata[] = Array.from(params)
 			.filter(([key, _]) => !Number.isNaN(Number.parseInt(key)))
 			.map(([_, value]) => {
-				const arr = value.split(" ");
+				const arr = value.split(".");
 				return {
 					type: arr[0],
 					id: arr[1],
@@ -50,8 +50,8 @@ export function useVideoMetadatas() {
 	function videoMetadatasToUrlParam() {
 		return videoMetadatas
 			.map((metadata, index) => {
-				const title = metadata.title ? `+${metadata.title}` : "";
-				return `${index}=${metadata.type}+${metadata.id}+${metadata.seconds}${title}`;
+				const title = metadata.title ? `.${metadata.title}` : "";
+				return `${index}=${metadata.type}.${metadata.id}.${metadata.seconds}${title}`;
 			})
 			.join("&");
 	}

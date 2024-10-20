@@ -1,6 +1,6 @@
-import { Tooltip } from "@radix-ui/react-tooltip";
 import type { IconProps, Icon } from "@tabler/icons-react";
 import type { ForwardRefExoticComponent, RefAttributes } from "react";
+import { Tooltip } from "./Tooltip";
 
 type Props = {
 	children: string;

@@ -106,14 +106,14 @@ function App() {
 								<h2 className="mt-4">SNSでシェア</h2>
 								<div className="flex gap-2">
 									<LinkButton
-										href={`https://twitter.com/intent/tweet?url=${url}`}
+										href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`}
 										icon={IconBrandX}
 										iconOnly
 									>
 										X
 									</LinkButton>
 									<LinkButton
-										href={`https://social-plugins.line.me/lineit/share?url=${url}`}
+										href={`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`}
 										icon={IconBrandLine}
 										iconOnly
 									>

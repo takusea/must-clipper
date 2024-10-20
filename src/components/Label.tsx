@@ -1,3 +1,5 @@
+import * as LabelPrimitive from "@radix-ui/react-label";
+
 type Props = {
 	htmlFor: string;
 	children: string;
@@ -5,8 +7,8 @@ type Props = {
 
 export function Label(props: Props) {
 	return (
-		<label className="font-bold" htmlFor={props.htmlFor}>
+		<LabelPrimitive.Root className="font-bold" htmlFor={props.htmlFor}>
 			{props.children}
-		</label>
+		</LabelPrimitive.Root>
 	);
 }

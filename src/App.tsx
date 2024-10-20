@@ -6,8 +6,17 @@ import { VideoPlayer } from "./features/video-player/VideoPlayer";
 import { Button } from "./components/Button";
 import type { PageAttribute } from "./features/page-attribute/type";
 import { FloatingActionButton } from "./components/FloatingActionButton";
-import { IconEdit, IconShare } from "@tabler/icons-react";
+import {
+	IconBrandInstagram,
+	IconBrandLine,
+	IconBrandX,
+	IconCopy,
+	IconEdit,
+	IconShare,
+} from "@tabler/icons-react";
 import { usePageAttributes } from "./features/page-attribute/usePageAttribute";
+import { Dialog, DialogContent, DialogTrigger } from "./components/Dialog";
+import { TextField } from "./components/TextField";
 
 function App() {
 	const {
@@ -21,12 +30,12 @@ function App() {
 		usePageAttributes();
 	const [isEditing, setIsEditing] = useState(false);
 
-	function handleShare() {
+	const url = `${window.location.origin}${window.location.pathname}?${pageAttributeToUrlParam()}${videoMetadatasToUrlParam()}`;
+
+	function handleCopy() {
 		if (!navigator.clipboard) {
 			return;
 		}
-
-		const url = `${window.location.origin}${window.location.pathname}?${pageAttributeToUrlParam()}${videoMetadatasToUrlParam()}`;
 
 		navigator.clipboard.writeText(url);
 		console.log(`copied! ${url}`);
@@ -77,9 +86,34 @@ function App() {
 				/>
 			))}
 			<div className="mt-auto sticky bottom-0 flex flex-col gap-4 justify-end">
-				<FloatingActionButton onClick={handleShare} icon={IconShare}>
-					共有
-				</FloatingActionButton>
+				<div className="absolute right-0 bottom-full mb-4">
+					<Dialog>
+						<DialogTrigger>
+							<FloatingActionButton icon={IconShare}>共有</FloatingActionButton>
+						</DialogTrigger>
+						<DialogContent title="共有">
+							<div className="flex flex-col gap-4">
+								<div className="flex gap-2">
+									<TextField value={url} readOnly />
+									<Button icon={IconCopy} iconOnly onClick={handleCopy}>
+										コピー
+									</Button>
+								</div>
+								<div className="flex gap-2">
+									<Button icon={IconBrandX} iconOnly>
+										X
+									</Button>
+									<Button icon={IconBrandInstagram} iconOnly>
+										Instagram
+									</Button>
+									<Button icon={IconBrandLine} iconOnly>
+										Line
+									</Button>
+								</div>
+							</div>
+						</DialogContent>
+					</Dialog>
+				</div>
 				<div className="w-full bg-white border-t border-gray-200 py-4">
 					<VideoAddForm onAdd={addMetadata} />
 				</div>

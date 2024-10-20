@@ -4,6 +4,7 @@ type Props = {
 	value: string;
 	id?: string;
 	placeholder?: string;
+	readOnly?: boolean;
 	onChange?: ChangeEventHandler<HTMLInputElement>;
 	onBlur?: FocusEventHandler<HTMLInputElement>;
 };
@@ -16,6 +17,7 @@ export function TextField(props: Props) {
 			placeholder={props.placeholder}
 			id={props.id}
 			value={props.value}
+			readOnly={props.readOnly}
 			onChange={props.onChange}
 			onBlur={props.onBlur}
 		/>

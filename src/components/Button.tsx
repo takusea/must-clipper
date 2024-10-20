@@ -4,13 +4,14 @@ import type {
 	MouseEventHandler,
 	RefAttributes,
 } from "react";
+import { Tooltip } from "./Tooltip";
 
 type Props = {
 	children: string;
 	icon?: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
 	iconOnly?: boolean;
 	variant?: "primary" | "default" | "warning";
-	onClick: MouseEventHandler<HTMLButtonElement>;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export function Button(props: Props) {
@@ -27,15 +28,31 @@ export function Button(props: Props) {
 			break;
 	}
 
-	return (
-		<button
-			type="button"
-			className={`font-bold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
-			aria-label={props.iconOnly ? props.children : ""}
-			onClick={props.onClick}
-		>
-			{props.icon && <props.icon />}
-			<span className={props.iconOnly ? "hidden" : ""}>{props.children}</span>
-		</button>
+	return props.iconOnly ? (
+		<Tooltip content={props.children}>
+			<button
+				type="button"
+				className={`font-bold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
+				aria-label={props.iconOnly ? props.children : ""}
+				onClick={props.onClick}
+			>
+				{props.icon && <props.icon />}
+				<span className={props.iconOnly ? "hidden" : ""}>
+					{props.children}
+				</span>{" "}
+			</button>
+		</Tooltip>
+	) : (
+		<>
+			<button
+				type="button"
+				className={`font-bold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
+				aria-label={props.iconOnly ? props.children : ""}
+				onClick={props.onClick}
+			>
+				{props.icon && <props.icon />}
+				<span className={props.iconOnly ? "hidden" : ""}>{props.children}</span>
+			</button>
+		</>
 	);
 }

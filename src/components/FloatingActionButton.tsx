@@ -8,7 +8,7 @@ import type {
 type Props = {
 	children: string;
 	icon?: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
-	onClick: MouseEventHandler<HTMLButtonElement>;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export function FloatingActionButton(props: Props) {

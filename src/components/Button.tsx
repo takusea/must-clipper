@@ -31,8 +31,8 @@ export function Button(props: Props) {
 		<button
 			type="button"
 			className={`font-bold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
-			onClick={props.onClick}
 			aria-label={props.iconOnly ? props.children : ""}
+			onClick={props.onClick}
 		>
 			{props.icon && <props.icon />}
 			<span className={props.iconOnly ? "hidden" : ""}>{props.children}</span>

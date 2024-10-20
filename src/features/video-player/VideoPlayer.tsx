@@ -4,7 +4,7 @@ import type { VideoMetadata } from "../video-metadata/type";
 import {
 	formatUrlFromTwitchMetadata,
 	formatUrlFromYouTubeMetadata,
-} from "./formatUrlFromMetadata";
+} from "../video-metadata/formatUrlFromMetadata";
 import { VideoPlayerEditForm } from "./VideoPlayerEditForm";
 import { Button } from "../../components/Button";
 import {
@@ -49,21 +49,17 @@ export function VideoPlayer(props: Props) {
 		<div className="flex flex-col gap-2">
 			{videoIframe}
 			{!isEditing ? (
-				<>
-					<div className="flex gap-2 items-center">
-						<span className="text-gray-400 flex-shrink-0">{icon}</span>
-						<h2 className="flex-grow text-lg font-bold">
-							{props.metadata.title ? (
-								props.metadata.title
-							) : (
-								<span className="text-gray-400 select-none">タイトルなし</span>
-							)}
-						</h2>
-						<Button onClick={() => setIsEditing(true)} icon={IconEdit} iconOnly>
-							編集
-						</Button>
-					</div>
-				</>
+				<div className="flex gap-2 items-center">
+					<span className="text-gray-400 flex-shrink-0">{icon}</span>
+					<h2 className="flex-grow text-lg font-bold">
+						{props.metadata.title || (
+							<span className="text-gray-400 select-none">タイトルなし</span>
+						)}
+					</h2>
+					<Button onClick={() => setIsEditing(true)} icon={IconEdit} iconOnly>
+						編集
+					</Button>
+				</div>
 			) : (
 				<VideoPlayerEditForm
 					metadata={props.metadata}

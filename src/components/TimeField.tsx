@@ -11,7 +11,7 @@ type Props = {
 export function TimeField(props: Props) {
 	return (
 		<input
-			className="border border-black/20 h-10 rounded flex-grow px-2 shadow-inner"
+			className="border border-black/20 hover:border-black/30 h-10 rounded flex-grow px-2 shadow-inner"
 			type="time"
 			step={1000}
 			placeholder={props.placeholder}

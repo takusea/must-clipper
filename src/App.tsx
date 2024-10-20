@@ -39,14 +39,12 @@ function App() {
 
 	return (
 		<div className="max-w-screen-md min-h-screen m-auto flex flex-col gap-8 px-4">
-			<div className="w-full bg-white py-4 flex flex-col gap-2">
+			<div className="w-full bg-white py-4">
 				{!isEditing ? (
-					<>
+					<div className="flex flex-col gap-2">
 						<div className="flex gap-1 justify-between">
 							<h1 className="text-2xl font-bold">
-								{pageAttribute.title ? (
-									pageAttribute.title
-								) : (
+								{pageAttribute.title || (
 									<span className="text-gray-400 select-none">
 										タイトルなし
 									</span>
@@ -61,7 +59,7 @@ function App() {
 							</Button>
 						</div>
 						<p className="">{pageAttribute.description}</p>
-					</>
+					</div>
 				) : (
 					<PageAttributeEditForm
 						attr={pageAttribute}

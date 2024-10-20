@@ -1,5 +1,5 @@
 import { formatTimeFromSeconds } from "../../util/timeFormatter";
-import type { VideoMetadata } from "../video-metadata/type";
+import type { VideoMetadata } from "./type";
 
 export function formatUrlFromYouTubeMetadata(metadata: VideoMetadata) {
 	return `https://www.youtube.com/embed/${metadata.id}?start=${metadata.seconds}`;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { VideoAddForm } from "./features/video-metadata/VideoAddForm";
 import { PageAttributeEditForm } from "./features/page-attribute/PageAttributeEditForm";
 import { useVideoMetadatas } from "./features/video-metadata/useVideoMetadatas";
@@ -7,7 +7,6 @@ import { Button } from "./components/Button";
 import type { PageAttribute } from "./features/page-attribute/type";
 import { FloatingActionButton } from "./components/FloatingActionButton";
 import {
-	IconBrandInstagram,
 	IconBrandLine,
 	IconBrandX,
 	IconCopy,
@@ -17,6 +16,7 @@ import {
 import { usePageAttributes } from "./features/page-attribute/usePageAttribute";
 import { Dialog, DialogContent, DialogTrigger } from "./components/Dialog";
 import { TextField } from "./components/TextField";
+import { LinkButton } from "./components/LinkButton";
 
 function App() {
 	const {
@@ -30,7 +30,9 @@ function App() {
 		usePageAttributes();
 	const [isEditing, setIsEditing] = useState(false);
 
-	const url = `${window.location.origin}${window.location.pathname}?${pageAttributeToUrlParam()}${videoMetadatasToUrlParam()}`;
+	const url = useMemo(() => {
+		return `${window.location.origin}${window.location.pathname}?${pageAttributeToUrlParam()}${videoMetadatasToUrlParam()}`;
+	}, [pageAttributeToUrlParam, videoMetadatasToUrlParam]);
 
 	function handleCopy() {
 		if (!navigator.clipboard) {
@@ -77,14 +79,16 @@ function App() {
 					/>
 				)}
 			</div>
-			{videoMetadatas.map((metadata) => (
-				<VideoPlayer
-					key={metadata.id}
-					metadata={metadata}
-					onChange={editMetadata}
-					onDelete={removeMetadata}
-				/>
-			))}
+			<div className="flex flex-col gap-8 mb-auto">
+				{videoMetadatas.map((metadata) => (
+					<VideoPlayer
+						key={metadata.id}
+						metadata={metadata}
+						onChange={editMetadata}
+						onDelete={removeMetadata}
+					/>
+				))}
+			</div>
 			<div className="sticky bottom-0 flex flex-col gap-4 justify-end mt-16">
 				<div className="absolute right-0 bottom-full mb-4">
 					<Dialog>
@@ -101,15 +105,20 @@ function App() {
 								</div>
 								<h2 className="mt-4">SNSでシェア</h2>
 								<div className="flex gap-2">
-									<Button icon={IconBrandX} iconOnly>
+									<LinkButton
+										href={`https://twitter.com/intent/tweet?url=${url}`}
+										icon={IconBrandX}
+										iconOnly
+									>
 										X
-									</Button>
-									<Button icon={IconBrandInstagram} iconOnly>
-										Instagram
-									</Button>
-									<Button icon={IconBrandLine} iconOnly>
+									</LinkButton>
+									<LinkButton
+										href={`https://social-plugins.line.me/lineit/share?url=${url}`}
+										icon={IconBrandLine}
+										iconOnly
+									>
 										Line
-									</Button>
+									</LinkButton>
 								</div>
 							</div>
 						</DialogContent>

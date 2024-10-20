@@ -1,20 +1,16 @@
-import type { Icon, IconProps } from "@tabler/icons-react";
-import type {
-	ForwardRefExoticComponent,
-	MouseEventHandler,
-	RefAttributes,
-} from "react";
-import { Tooltip } from "./Tooltip";
+import { Tooltip } from "@radix-ui/react-tooltip";
+import type { IconProps, Icon } from "@tabler/icons-react";
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
 
 type Props = {
 	children: string;
+	href: string;
 	icon?: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
 	iconOnly?: boolean;
 	variant?: "primary" | "default" | "warning";
-	onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-export function Button(props: Props) {
+export function LinkButton(props: Props) {
 	let color: string;
 	switch (props.variant) {
 		case "primary":
@@ -29,15 +25,15 @@ export function Button(props: Props) {
 	}
 
 	const button = (
-		<button
+		<a
 			type="button"
 			className={`font-bold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
 			aria-label={props.iconOnly ? props.children : ""}
-			onClick={props.onClick}
+			href={props.href}
 		>
 			{props.icon && <props.icon />}
 			<span className={props.iconOnly ? "hidden" : ""}>{props.children}</span>
-		</button>
+		</a>
 	);
 
 	return props.iconOnly ? (

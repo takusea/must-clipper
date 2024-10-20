@@ -7,9 +7,11 @@ import { Button } from "./components/Button";
 import type { PageAttribute } from "./features/page-attribute/type";
 import { FloatingActionButton } from "./components/FloatingActionButton";
 import {
+	IconBrandFacebook,
 	IconBrandLine,
 	IconBrandX,
 	IconCopy,
+	IconDotsCircleHorizontal,
 	IconEdit,
 	IconShare,
 } from "@tabler/icons-react";
@@ -30,16 +32,25 @@ function App() {
 		usePageAttributes();
 	const [isEditing, setIsEditing] = useState(false);
 
-  useEffect(() => {
-    document.title = pageAttribute.title !== "" ? `${pageAttribute.title} - ますとくりっぱー` : "タイトルなし - ますとくりっぱー"
-  }, [pageAttribute])
+	useEffect(() => {
+		document.title =
+			pageAttribute.title !== ""
+				? `${pageAttribute.title} - ますとくりっぱー`
+				: "タイトルなし - ますとくりっぱー";
+	}, [pageAttribute]);
 
 	const url = useMemo(() => {
 		return `${window.location.origin}${window.location.pathname}?${pageAttributeToUrlParam()}${videoMetadatasToUrlParam()}`;
 	}, [pageAttributeToUrlParam, videoMetadatasToUrlParam]);
 
+	function handleAttrSubmit(attr: PageAttribute) {
+		setPageAttribute(attr);
+		setIsEditing(false);
+	}
+
 	function handleCopy() {
 		if (!navigator.clipboard) {
+			console.log("Clipboard API not support");
 			return;
 		}
 
@@ -47,9 +58,22 @@ function App() {
 		console.log(`copied! ${url}`);
 	}
 
-	function handleAttrSubmit(attr: PageAttribute) {
-		setPageAttribute(attr);
-		setIsEditing(false);
+	async function handleShare() {
+		if (!navigator.share) {
+			console.log("Web Share API not support");
+			return;
+		}
+
+		try {
+			await navigator.share({
+				title: pageAttribute.title,
+				text: pageAttribute.description,
+				url,
+			});
+			console.log("successed");
+		} catch (err) {
+			console.log("failed");
+		}
 	}
 
 	return (
@@ -123,6 +147,20 @@ function App() {
 									>
 										Line
 									</LinkButton>
+									<LinkButton
+										href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}
+										icon={IconBrandFacebook}
+										iconOnly
+									>
+										Facebook
+									</LinkButton>
+									<Button
+										icon={IconDotsCircleHorizontal}
+										iconOnly
+										onClick={handleShare}
+									>
+										その他
+									</Button>
 								</div>
 							</div>
 						</DialogContent>

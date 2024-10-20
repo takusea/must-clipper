@@ -3,6 +3,6 @@ import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: process.env.GITHUB_PAGES ? "multi-clipper" : "./",
+	base: process.env.GITHUB_PAGES ? "must-clipper" : "./",
 	plugins: [react()],
 });

@@ -85,20 +85,21 @@ function App() {
 					onDelete={removeMetadata}
 				/>
 			))}
-			<div className="mt-auto sticky bottom-0 flex flex-col gap-4 justify-end">
+			<div className="sticky bottom-0 flex flex-col gap-4 justify-end mt-16">
 				<div className="absolute right-0 bottom-full mb-4">
 					<Dialog>
 						<DialogTrigger>
 							<FloatingActionButton icon={IconShare}>共有</FloatingActionButton>
 						</DialogTrigger>
 						<DialogContent title="共有">
-							<div className="flex flex-col gap-4">
+							<div className="flex flex-col gap-2">
 								<div className="flex gap-2">
 									<TextField value={url} readOnly />
 									<Button icon={IconCopy} iconOnly onClick={handleCopy}>
 										コピー
 									</Button>
 								</div>
+								<h2 className="mt-4">SNSでシェア</h2>
 								<div className="flex gap-2">
 									<Button icon={IconBrandX} iconOnly>
 										X

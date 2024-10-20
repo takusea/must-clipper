@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { VideoAddForm } from "./features/video-metadata/VideoAddForm";
 import { PageAttributeEditForm } from "./features/page-attribute/PageAttributeEditForm";
 import { useVideoMetadatas } from "./features/video-metadata/useVideoMetadatas";
@@ -29,6 +29,10 @@ function App() {
 	const { pageAttribute, setPageAttribute, pageAttributeToUrlParam } =
 		usePageAttributes();
 	const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    document.title = pageAttribute.title !== "" ? `${pageAttribute.title} - ますとくりっぱー` : "タイトルなし - ますとくりっぱー"
+  }, [pageAttribute])
 
 	const url = useMemo(() => {
 		return `${window.location.origin}${window.location.pathname}?${pageAttributeToUrlParam()}${videoMetadatasToUrlParam()}`;

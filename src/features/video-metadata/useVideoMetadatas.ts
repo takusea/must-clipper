@@ -51,7 +51,7 @@ export function useVideoMetadatas() {
 		return videoMetadatas
 			.map((metadata, index) => {
 				const title = metadata.title ? `.${metadata.title}` : "";
-				return `${index}=${metadata.type}.${metadata.id}.${metadata.seconds}${title}`;
+				return `${index}=${metadata.type}.${metadata.id}.${metadata.seconds}${encodeURIComponent(title)}`;
 			})
 			.join("&");
 	}

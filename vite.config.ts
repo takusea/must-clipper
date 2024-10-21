@@ -17,7 +17,6 @@ export default defineConfig({
 				description: "YouTube・Twitch用配信まとめツール",
 				theme_color: "#5eead4",
 				start_url: "https://must-clipper.takusea.com",
-				display: "standalone",
 				icons: [
 					{
 						src: "icon-128.png",

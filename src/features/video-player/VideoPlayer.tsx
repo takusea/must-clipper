@@ -55,32 +55,34 @@ export function VideoPlayer(props: Props) {
 		<div className="flex flex-col gap-2">
 			{videoIframe}
 			{!isEditing ? (
-				<div className="flex gap-2 items-center">
+				<div className="flex gap-2 items-center flex-wrap">
 					<span className="text-gray-400 flex-shrink-0">{icon}</span>
 					<h2 className="flex-grow text-lg font-semibold">
 						{props.metadata.title || (
 							<span className="text-gray-400 select-none">タイトルなし</span>
 						)}
 					</h2>
-					<Button
-						icon={IconChevronUp}
-						iconOnly
-						disabled={props.isUpDisabled}
-						onClick={() => props.onUp()}
-					>
-						上へ
-					</Button>
-					<Button
-						icon={IconChevronDown}
-						iconOnly
-						disabled={props.isDownDisabled}
-						onClick={() => props.onDown()}
-					>
-						下へ
-					</Button>
-					<Button onClick={() => setIsEditing(true)} icon={IconEdit} iconOnly>
-						編集
-					</Button>
+					<div className="flex gap-2 items-center ml-auto">
+						<Button
+							icon={IconChevronUp}
+							iconOnly
+							disabled={props.isUpDisabled}
+							onClick={() => props.onUp()}
+						>
+							上へ
+						</Button>
+						<Button
+							icon={IconChevronDown}
+							iconOnly
+							disabled={props.isDownDisabled}
+							onClick={() => props.onDown()}
+						>
+							下へ
+						</Button>
+						<Button onClick={() => setIsEditing(true)} icon={IconEdit} iconOnly>
+							編集
+						</Button>
+					</div>
 				</div>
 			) : (
 				<VideoPlayerEditForm

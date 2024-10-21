@@ -135,7 +135,7 @@ function App() {
 										コピー
 									</Button>
 								</div>
-								<h2 className="mt-4">SNSでシェア</h2>
+								<h2 className="mt-4 font-semibold">SNSでシェア</h2>
 								<div className="flex gap-2">
 									<LinkButton
 										href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`}

@@ -27,7 +27,7 @@ export function LinkButton(props: Props) {
 	const button = (
 		<a
 			type="button"
-			className={`font-bold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
+			className={`font-semibold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
 			aria-label={props.iconOnly ? props.children : ""}
 			href={props.href}
 		>

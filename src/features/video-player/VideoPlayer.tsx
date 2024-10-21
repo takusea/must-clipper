@@ -51,7 +51,7 @@ export function VideoPlayer(props: Props) {
 			{!isEditing ? (
 				<div className="flex gap-2 items-center">
 					<span className="text-gray-400 flex-shrink-0">{icon}</span>
-					<h2 className="flex-grow text-lg font-bold">
+					<h2 className="flex-grow text-lg font-semibold">
 						{props.metadata.title || (
 							<span className="text-gray-400 select-none">タイトルなし</span>
 						)}

@@ -7,7 +7,7 @@ type Props = {
 
 export function Label(props: Props) {
 	return (
-		<LabelPrimitive.Root className="font-bold" htmlFor={props.htmlFor}>
+		<LabelPrimitive.Root className="font-semibold" htmlFor={props.htmlFor}>
 			{props.children}
 		</LabelPrimitive.Root>
 	);

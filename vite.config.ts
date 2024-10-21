@@ -9,7 +9,7 @@ export default defineConfig({
 		react(),
 		VitePWA({
 			registerType: "autoUpdate",
-			includeAssets: ["favicon.png"],
+			includeAssets: ["favicon.png", "apple-touch-icon.png"],
 			injectRegister: "auto",
 			manifest: {
 				name: "ますとくりっぱー",
@@ -19,11 +19,6 @@ export default defineConfig({
 				start_url: "https://must-clipper.takusea.com",
 				icons: [
 					{
-						src: "icon-128.png",
-						sizes: "128x128",
-						type: "image/png",
-					},
-					{
 						src: "icon-192.png",
 						sizes: "192x192",
 						type: "image/png",
@@ -32,6 +27,12 @@ export default defineConfig({
 						src: "icon-512.png",
 						sizes: "512x512",
 						type: "image/png",
+					},
+					{
+						src: "icon-512.png",
+						sizes: "512x512",
+						type: "image/png",
+						purpose: "any",
 					},
 				],
 				share_target: {

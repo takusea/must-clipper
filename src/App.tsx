@@ -37,6 +37,10 @@ function App() {
 			pageAttribute.title !== ""
 				? `${pageAttribute.title} - ますとくりっぱー`
 				: "タイトルなし - ますとくりっぱー";
+
+		document
+			.querySelector('meta[name="description"]')
+			?.setAttribute("content", pageAttribute.description);
 	}, [pageAttribute]);
 
 	const url = useMemo(() => {
@@ -97,7 +101,7 @@ function App() {
 								編集
 							</Button>
 						</div>
-						<p className="">{pageAttribute.description}</p>
+						<p>{pageAttribute.description}</p>
 					</div>
 				) : (
 					<PageAttributeEditForm

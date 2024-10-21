@@ -23,7 +23,7 @@ export function Tooltip(props: Props) {
 				side="top"
 				align="center"
 				sideOffset={4}
-				className="bg-white border border-black/20 shadow-md h-8 px-2 flex items-center rounded z-0 select-none"
+				className="bg-white text-black border border-black/20 shadow-md h-8 px-2 flex items-center rounded z-0 select-none"
 			>
 				{props.content}
 			</TooltipPrimitive.Content>

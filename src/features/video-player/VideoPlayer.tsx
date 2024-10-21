@@ -41,9 +41,9 @@ export function VideoPlayer(props: Props) {
 			break;
 	}
 
-	function handleDelete(id: string) {
+	function handleDelete() {
 		setIsEditing(false);
-		props.onDelete(id);
+		props.onDelete();
 	}
 
 	function handleSubmit(id: string, metadata: VideoMetadata) {

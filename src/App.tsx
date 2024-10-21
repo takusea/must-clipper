@@ -26,6 +26,7 @@ function App() {
 		addMetadata,
 		removeMetadata,
 		editMetadata,
+		moveMetadata,
 		videoMetadatasToUrlParam,
 	} = useVideoMetadatas();
 	const { pageAttribute, setPageAttribute, pageAttributeToUrlParam } =
@@ -80,6 +81,14 @@ function App() {
 		}
 	}
 
+	function handleUp(index: number): void {
+		moveMetadata(index, index - 1);
+	}
+
+	function handleDown(index: number): void {
+		moveMetadata(index, index + 1);
+	}
+
 	return (
 		<div className="max-w-screen-md min-h-screen m-auto flex flex-col gap-8 px-4">
 			<div className="w-full bg-white py-4">
@@ -112,12 +121,16 @@ function App() {
 				)}
 			</div>
 			<div className="flex flex-col gap-8 mb-auto">
-				{videoMetadatas.map((metadata) => (
+				{videoMetadatas.map((metadata, index) => (
 					<VideoPlayer
 						key={metadata.id}
 						metadata={metadata}
 						onChange={editMetadata}
-						onDelete={removeMetadata}
+						onDelete={() => removeMetadata(index)}
+						onUp={() => handleUp(index)}
+						onDown={() => handleDown(index)}
+						isUpDisabled={index === 0}
+						isDownDisabled={index === videoMetadatas.length - 1}
 					/>
 				))}
 			</div>

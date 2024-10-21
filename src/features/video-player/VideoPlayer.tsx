@@ -10,13 +10,19 @@ import { Button } from "../../components/Button";
 import {
 	IconBrandTwitch,
 	IconBrandYoutube,
+	IconChevronDown,
+	IconChevronUp,
 	IconEdit,
 } from "@tabler/icons-react";
 
 type Props = {
-	onChange: (id: string, metadata: VideoMetadata) => void;
 	metadata: VideoMetadata;
-	onDelete: (id: string) => void;
+	isUpDisabled: boolean;
+	isDownDisabled: boolean;
+	onUp: () => void;
+	onDown: () => void;
+	onDelete: () => void;
+	onChange: (id: string, metadata: VideoMetadata) => void;
 };
 
 export function VideoPlayer(props: Props) {
@@ -56,6 +62,22 @@ export function VideoPlayer(props: Props) {
 							<span className="text-gray-400 select-none">タイトルなし</span>
 						)}
 					</h2>
+					<Button
+						icon={IconChevronUp}
+						iconOnly
+						disabled={props.isUpDisabled}
+						onClick={() => props.onUp()}
+					>
+						上へ
+					</Button>
+					<Button
+						icon={IconChevronDown}
+						iconOnly
+						disabled={props.isDownDisabled}
+						onClick={() => props.onDown()}
+					>
+						下へ
+					</Button>
 					<Button onClick={() => setIsEditing(true)} icon={IconEdit} iconOnly>
 						編集
 					</Button>

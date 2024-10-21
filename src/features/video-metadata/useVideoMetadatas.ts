@@ -36,14 +36,22 @@ export function useVideoMetadatas() {
 	function addMetadata(newMetadata: VideoMetadata) {
 		if (videoMetadatas.some((metadata) => metadata.id === newMetadata.id)) {
 			editMetadata(newMetadata.id, newMetadata);
-		} else {
-			setVideoMetadatas((metadatas) => [...metadatas, newMetadata]);
+			return;
 		}
+
+		setVideoMetadatas((metadatas) => [...metadatas, newMetadata]);
 	}
 
-	function removeMetadata(id: number | string) {
+	function removeMetadata(index: number | string) {
+		setVideoMetadatas((metadatas) => metadatas.filter((_, i) => i !== index));
+	}
+
+	function moveMetadata(oldIndex: number, newIndex: number) {
+		const metadata = videoMetadatas[oldIndex];
 		setVideoMetadatas((metadatas) =>
-			metadatas.filter((metadata) => metadata.id !== id),
+			metadatas
+				.filter((_, i) => i !== oldIndex)
+				.toSpliced(newIndex, 0, metadata),
 		);
 	}
 
@@ -61,6 +69,7 @@ export function useVideoMetadatas() {
 		addMetadata,
 		removeMetadata,
 		editMetadata,
+		moveMetadata,
 		videoMetadatasToUrlParam,
 	};
 }

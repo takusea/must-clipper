@@ -8,9 +8,10 @@ import { Tooltip } from "./Tooltip";
 
 type Props = {
 	children: string;
-	icon?: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
-	iconOnly?: boolean;
 	variant?: "primary" | "default" | "warning";
+	disabled?: boolean;
+	iconOnly?: boolean;
+	icon?: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
 	onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
@@ -31,9 +32,10 @@ export function Button(props: Props) {
 	const button = (
 		<button
 			type="button"
-			className={`font-semibold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
+			className={`font-semibold h-10 min-w-10 rounded justify-center flex gap-1 items-center disabled:opacity-50 ${color} ${!props.iconOnly && "px-4"}`}
 			aria-label={props.iconOnly ? props.children : ""}
 			onClick={props.onClick}
+			disabled={props.disabled}
 		>
 			{props.icon && <props.icon />}
 			<span className={props.iconOnly ? "hidden" : ""}>{props.children}</span>

@@ -9,7 +9,7 @@ export default defineConfig({
 		react(),
 		VitePWA({
 			registerType: "autoUpdate",
-			includeAssets: ["icon.png"],
+			includeAssets: ["favicon.png"],
 			injectRegister: "auto",
 			manifest: {
 				name: "ますとくりっぱー",
@@ -20,12 +20,12 @@ export default defineConfig({
 				display: "standalone",
 				icons: [
 					{
-						src: "icon.png",
+						src: "icon-192.png",
 						sizes: "192x192",
 						type: "image/png",
 					},
 					{
-						src: "icon.png",
+						src: "icon-512.png",
 						sizes: "512x512",
 						type: "image/png",
 					},

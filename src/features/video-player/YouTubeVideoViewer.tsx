@@ -1,4 +1,4 @@
-import YouTube from "react-youtube";
+import YouTube, { type YouTubeEvent } from "react-youtube";
 import type { VideoMetadata } from "../video-metadata/type";
 
 type Props = {
@@ -13,7 +13,7 @@ export function YouTubeVideoViewer(props: Props) {
 		},
 	};
 
-	const handleStateChange = (event) => {
+	const handleStateChange = (event: YouTubeEvent) => {
 		if (event.data !== 1) {
 			return;
 		}

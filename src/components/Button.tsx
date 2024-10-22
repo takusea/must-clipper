@@ -1,13 +1,14 @@
 import type { Icon, IconProps } from "@tabler/icons-react";
-import type {
-	ForwardRefExoticComponent,
-	MouseEventHandler,
-	RefAttributes,
+import {
+	useMemo,
+	type ForwardRefExoticComponent,
+	type MouseEventHandler,
+	type RefAttributes,
 } from "react";
 import { Tooltip } from "./Tooltip";
 
 type Props = {
-	children: string;
+	children: string | string[];
 	variant?: "primary" | "default" | "warning";
 	disabled?: boolean;
 	iconOnly?: boolean;
@@ -16,18 +17,16 @@ type Props = {
 };
 
 export function Button(props: Props) {
-	let color: string;
-	switch (props.variant) {
-		case "primary":
-			color = "bg-teal-200 border border-black/20 hover:bg-teal-300";
-			break;
-		case "warning":
-			color = "bg-red-500 text-white border border-black/20 hover:bg-red-600";
-			break;
-		default:
-			color = "hover:bg-gray-500/10";
-			break;
-	}
+	const color = useMemo(() => {
+		switch (props.variant) {
+			case "primary":
+				return "bg-teal-200 border border-black/20 hover:bg-teal-300";
+			case "warning":
+				return "bg-red-500 text-white border border-black/20 hover:bg-red-600";
+			default:
+				return "hover:bg-gray-500/10";
+		}
+	}, [props.variant]);
 
 	const button = (
 		<button

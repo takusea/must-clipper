@@ -92,7 +92,7 @@ function App() {
 	}
 
 	return (
-		<>
+		<div className="contents text-gray-900">
 			<Header />
 			<div className="max-w-screen-md min-h-screen m-auto flex flex-col gap-8 px-4">
 				<div className="w-full bg-white py-4">
@@ -195,7 +195,7 @@ function App() {
 				</div>
 			</div>
 			<Footer />
-		</>
+		</div>
 	);
 }
 

@@ -10,7 +10,7 @@ type Props = {
 
 export const DialogContent = (props: Props) => (
 	<DialogPrimitive.Portal>
-		<DialogPrimitive.Overlay className="fixed inset-0 bg-black/20" />
+		<DialogPrimitive.Overlay className="fixed inset-0 bg-black/50" />
 		<DialogPrimitive.Content
 			className="fixed inset-0 m-4 grid place-content-center"
 			{...props}

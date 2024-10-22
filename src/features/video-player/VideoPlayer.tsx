@@ -1,10 +1,5 @@
-import { type ReactNode, useState } from "react";
-import { VideoPlayerIframe } from "./VideoPlayerIframe";
+import { type ReactNode, useMemo, useState } from "react";
 import type { VideoMetadata } from "../video-metadata/type";
-import {
-	formatUrlFromTwitchMetadata,
-	formatUrlFromYouTubeMetadata,
-} from "../video-metadata/formatEmbedUrl";
 import { VideoPlayerEditForm } from "./VideoPlayerEditForm";
 import { Button } from "../../components/Button";
 import {
@@ -14,6 +9,8 @@ import {
 	IconChevronUp,
 	IconEdit,
 } from "@tabler/icons-react";
+import { TwitchVideoViewer } from "./TwitchVideoViewer";
+import { YouTubeVideoViewer } from "./YouTubeVideoViewer";
 
 type Props = {
 	metadata: VideoMetadata;
@@ -27,19 +24,35 @@ type Props = {
 
 export function VideoPlayer(props: Props) {
 	const [isEditing, setIsEditing] = useState(false);
+	const [currentTime, setCurrentTime] = useState(props.metadata.seconds);
 
-	let videoIframe: ReactNode;
-	let icon: ReactNode;
-	switch (props.metadata.type) {
-		case "yt":
-			videoIframe = <YouTubeVideoViewer {...props} />;
-			icon = <IconBrandYoutube />;
-			break;
-		case "tw":
-			videoIframe = <TwitchVideoViewer {...props} />;
-			icon = <IconBrandTwitch />;
-			break;
-	}
+	const videoIframe = useMemo(() => {
+		switch (props.metadata.type) {
+			case "yt":
+				return (
+					<YouTubeVideoViewer
+						metadata={props.metadata}
+						onTimeChanged={handleTimeChanged}
+					/>
+				);
+			case "tw":
+				return (
+					<TwitchVideoViewer
+						metadata={props.metadata}
+						onTimeChanged={handleTimeChanged}
+					/>
+				);
+		}
+	}, [props.metadata]);
+
+	const icon = useMemo(() => {
+		switch (props.metadata.type) {
+			case "yt":
+				return <IconBrandYoutube />;
+			case "tw":
+				return <IconBrandTwitch />;
+		}
+	}, [props.metadata]);
 
 	function handleDelete() {
 		setIsEditing(false);
@@ -49,6 +62,10 @@ export function VideoPlayer(props: Props) {
 	function handleSubmit(id: string, metadata: VideoMetadata) {
 		setIsEditing(false);
 		props.onChange(id, metadata);
+	}
+
+	function handleTimeChanged(time: number) {
+		setCurrentTime(time);
 	}
 
 	return (
@@ -87,35 +104,12 @@ export function VideoPlayer(props: Props) {
 			) : (
 				<VideoPlayerEditForm
 					metadata={props.metadata}
+					currentTime={currentTime ?? 0}
 					onCancel={() => setIsEditing(false)}
 					onDelete={handleDelete}
 					onSubmit={handleSubmit}
 				/>
 			)}
 		</div>
-	);
-}
-
-function YouTubeVideoViewer(props: Props) {
-	return (
-		<VideoPlayerIframe
-			src={formatUrlFromYouTubeMetadata(props.metadata)}
-			url={props.metadata.id}
-			time={props.metadata.seconds}
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			referrerPolicy="strict-origin-when-cross-origin"
-			allowFullScreen
-		/>
-	);
-}
-
-function TwitchVideoViewer(props: Props) {
-	return (
-		<VideoPlayerIframe
-			src={formatUrlFromTwitchMetadata(props.metadata)}
-			url={props.metadata.id}
-			time={props.metadata.seconds}
-			allowFullScreen
-		/>
 	);
 }

@@ -1,13 +1,15 @@
 import { type ChangeEvent, useState } from "react";
-import { IconCheck, IconTrash } from "@tabler/icons-react";
+import { IconCheck, IconClock, IconTrash } from "@tabler/icons-react";
 import { Button } from "../../components/Button";
 import { TextField } from "../../components/TextField";
 import type { VideoMetadata } from "../video-metadata/type";
 import { TimeField } from "../../components/TimeField";
 import { Label } from "../../components/Label";
+import { Tooltip } from "../../components/Tooltip";
 
 type Props = {
 	metadata: VideoMetadata;
+	currentTime: number;
 	onCancel: () => void;
 	onDelete(id: string): void;
 	onSubmit: (id: string, metadata: VideoMetadata) => void;
@@ -56,12 +58,19 @@ export function VideoPlayerEditForm(props: Props) {
 				/>
 			</div>
 			<div className="flex-grow flex items-center gap-2">
-				<Label htmlFor={`seconds-${id}`}>開始位置</Label>
+				<Label htmlFor={`seconds-${id}`}>
+					<Tooltip content="開始位置">
+						<IconClock />
+					</Tooltip>
+				</Label>
 				<TimeField
 					id={`seconds-${id}`}
 					value={toDisplayTime(seconds ?? 0)}
 					onChange={handleTimeChange}
 				/>
+				<Button onClick={() => setSeconds(props.currentTime)}>
+					{toDisplayTime(props.currentTime)} に設定
+				</Button>
 			</div>
 			<div className="flex-grow flex items-center gap-2 w-full">
 				<div className="flex-grow">

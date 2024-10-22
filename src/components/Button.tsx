@@ -32,7 +32,7 @@ export function Button(props: Props) {
 	const button = (
 		<button
 			type="button"
-			className={`font-semibold h-10 min-w-10 rounded justify-center flex gap-1 items-center disabled:opacity-50 ${color} ${!props.iconOnly && "px-4"}`}
+			className={`font-semibold h-10 min-w-10 rounded justify-center flex gap-1 items-center disabled:opacity-50 ${color} ${!props.iconOnly && "px-3"}`}
 			onClick={props.onClick}
 			disabled={props.disabled}
 			{...(props.iconOnly && { "aria-label": props.children })}

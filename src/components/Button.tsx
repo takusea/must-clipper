@@ -8,7 +8,7 @@ import {
 import { Tooltip } from "./Tooltip";
 
 type Props = {
-	children: string | string[];
+	children: string;
 	variant?: "primary" | "default" | "warning";
 	disabled?: boolean;
 	iconOnly?: boolean;

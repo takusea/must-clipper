@@ -69,7 +69,7 @@ export function VideoPlayerEditForm(props: Props) {
 					onChange={handleTimeChange}
 				/>
 				<Button onClick={() => setSeconds(props.currentTime)}>
-					{toDisplayTime(props.currentTime)} に設定
+					{`${toDisplayTime(props.currentTime)}に設定`}
 				</Button>
 			</div>
 			<div className="flex-grow flex items-center gap-2 w-full">

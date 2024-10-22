@@ -7,8 +7,8 @@ import { LinkButton } from "../components/LinkButton";
 
 export function Footer() {
 	return (
-		<div className="w-full h-16 bg-black text-white">
-			<div className="m-auto max-w-screen-md h-full flex gap-2 items-center justify-between px-4">
+		<footer className="w-full h-16 bg-gray-100 border-t border-gray-200">
+			<div className="m-auto max-w-screen-lg h-full flex gap-2 items-center justify-between px-4">
 				<small className="text-base">©2024 takusea</small>
 				<div className="flex gap-2">
 					<LinkButton icon={IconBrandX} iconOnly href="https://x.com/takusea">
@@ -30,6 +30,6 @@ export function Footer() {
 					</LinkButton>
 				</div>
 			</div>
-		</div>
+		</footer>
 	);
 }

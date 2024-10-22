@@ -7,6 +7,7 @@ type Props = {
 	href: string;
 	icon?: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
 	iconOnly?: boolean;
+	isOpenOnNewTab?: boolean;
 	variant?: "primary" | "default" | "warning";
 };
 
@@ -28,8 +29,9 @@ export function LinkButton(props: Props) {
 		<a
 			type="button"
 			className={`font-semibold h-10 min-w-10 rounded justify-center flex gap-1 items-center ${color} ${!props.iconOnly && "px-4"}`}
-			aria-label={props.iconOnly ? props.children : ""}
 			href={props.href}
+			{...(props.isOpenOnNewTab && { target: "_blank", rel: "noreffer" })}
+			{...(props.iconOnly && { "aria-label": props.children })}
 		>
 			{props.icon && <props.icon />}
 			<span className={props.iconOnly ? "hidden" : ""}>{props.children}</span>

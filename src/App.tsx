@@ -160,6 +160,7 @@ function App() {
 											href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`}
 											icon={IconBrandX}
 											iconOnly
+											isOpenOnNewTab
 										>
 											X
 										</LinkButton>
@@ -167,6 +168,7 @@ function App() {
 											href={`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`}
 											icon={IconBrandLine}
 											iconOnly
+											isOpenOnNewTab
 										>
 											Line
 										</LinkButton>
@@ -174,6 +176,7 @@ function App() {
 											href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}
 											icon={IconBrandFacebook}
 											iconOnly
+											isOpenOnNewTab
 										>
 											Facebook
 										</LinkButton>

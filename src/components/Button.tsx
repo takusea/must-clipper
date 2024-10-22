@@ -20,9 +20,9 @@ export function Button(props: Props) {
 	const color = useMemo(() => {
 		switch (props.variant) {
 			case "primary":
-				return "bg-teal-200 border border-black/20 hover:bg-teal-300";
+				return "text-gray-900 bg-teal-200 border border-gray-500/20 hover:bg-teal-300";
 			case "warning":
-				return "bg-red-500 text-white border border-black/20 hover:bg-red-600";
+				return "bg-red-500 text-white border border-gray-500/20 hover:bg-red-600";
 			default:
 				return "hover:bg-gray-500/10";
 		}

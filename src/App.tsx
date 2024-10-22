@@ -92,10 +92,10 @@ function App() {
 	}
 
 	return (
-		<div className="contents text-gray-900">
+		<div className="text-gray-900 dark:text-white dark:bg-gray-900">
 			<Header />
 			<div className="max-w-screen-md min-h-screen m-auto flex flex-col gap-8 px-4">
-				<div className="w-full bg-white py-4">
+				<div className="w-full py-4">
 					{!isEditing ? (
 						<div className="flex flex-col gap-2">
 							<div className="flex gap-1 justify-between">
@@ -192,7 +192,7 @@ function App() {
 							</DialogContent>
 						</Dialog>
 					</div>
-					<div className="w-full bg-white border-t border-gray-200 py-4">
+					<div className="w-full bg-white dark:bg-gray-900 border-t border-gray-500/20 py-4">
 						<VideoAddForm onAdd={addMetadata} />
 					</div>
 				</div>

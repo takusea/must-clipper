@@ -15,10 +15,10 @@ export function LinkButton(props: Props) {
 	let color: string;
 	switch (props.variant) {
 		case "primary":
-			color = "bg-teal-200 border border-black/20 hover:bg-teal-300";
+			color = "text-gray-900 bg-teal-200 border border-gray-500/20 hover:bg-teal-300";
 			break;
 		case "warning":
-			color = "bg-red-500 text-white border border-black/20 hover:bg-red-600";
+			color = "bg-red-500 text-white border border-gray-500/20 hover:bg-red-600";
 			break;
 		default:
 			color = "hover:bg-gray-500/10";

@@ -1,5 +1,5 @@
 import { parseTimeToSeconds } from "../../util/timeFormatter";
-import type { VideoMetadata } from "../video-metadata/type";
+import type { VideoMetadata } from "./type";
 
 export function parseUrlToYouTubeMetadata(url: string): VideoMetadata {
 	const query = url.includes("live")

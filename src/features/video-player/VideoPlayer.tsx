@@ -4,7 +4,7 @@ import type { VideoMetadata } from "../video-metadata/type";
 import {
 	formatUrlFromTwitchMetadata,
 	formatUrlFromYouTubeMetadata,
-} from "../video-metadata/formatUrlFromMetadata";
+} from "../video-metadata/formatEmbedUrl";
 import { VideoPlayerEditForm } from "./VideoPlayerEditForm";
 import { Button } from "../../components/Button";
 import {

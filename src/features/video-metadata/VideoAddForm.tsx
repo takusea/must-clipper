@@ -3,7 +3,7 @@ import type { VideoMetadata } from "./type";
 import {
 	parseUrlToTwitchMetadata,
 	parseUrlToYouTubeMetadata,
-} from "./parseUrlToMetadata";
+} from "./parseUrl";
 import { TextField } from "../../components/TextField";
 import { Button } from "../../components/Button";
 import { IconPlus } from "@tabler/icons-react";

@@ -18,7 +18,7 @@ export function VideoAddForm(props: Props) {
 
 	const handleClick = () => {
 		let metadata: VideoMetadata;
-		if (url.includes("youtube")) {
+		if (url.includes("youtu")) {
 			metadata = parseUrlToYouTubeMetadata(url);
 		} else if (url.includes("twitch")) {
 			metadata = parseUrlToTwitchMetadata(url);

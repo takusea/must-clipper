@@ -1,10 +1,18 @@
 import { parseTimeToSeconds } from "../../util/timeFormatter";
 import type { VideoMetadata } from "./type";
 
+function normalizeYouTubeUrl(url: string) {
+	if (url.includes("youtu.be")) {
+		return url.replace("?", "&").replace("youtu.be/", "youtube.com/watch?v=");
+	}
+	if (url.includes("live")) {
+		return url.replace("?", "&").replace("live/", "watch?v=");
+	}
+	return url;
+}
+
 export function parseUrlToYouTubeMetadata(url: string): VideoMetadata {
-	const query = url.includes("live")
-		? url.replace("?", "&").replace("live/", "watch?v=").split("?")[1]
-		: url.split("?")[1];
+	const query = normalizeYouTubeUrl(url).split("?")[1];
 	const params = new URLSearchParams(query);
 
 	const id = params.get("v");

@@ -111,7 +111,7 @@ function App() {
 									icon={IconEdit}
 									iconOnly
 								>
-									編集
+									クリップ情報を編集
 								</Button>
 							</div>
 							<p>{pageAttribute.description}</p>

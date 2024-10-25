@@ -33,10 +33,10 @@ export function VideoAddForm(props: Props) {
 	return (
 		<div className="flex gap-2 items-center">
 			<Label htmlFor="add-url">
-        <Tooltip content="URL">
-          <IconLink />
-        </Tooltip>
-      </Label>
+				<Tooltip content="URL">
+					<IconLink />
+				</Tooltip>
+			</Label>
 			<TextField
 				id="add-url"
 				value={url}
@@ -44,7 +44,7 @@ export function VideoAddForm(props: Props) {
 				placeholder="YouTube Live or Twitch URL"
 			/>
 			<Button icon={IconPlus} iconOnly onClick={handleClick}>
-				追加
+				動画を追加
 			</Button>
 		</div>
 	);

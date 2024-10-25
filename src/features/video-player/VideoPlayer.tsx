@@ -86,7 +86,7 @@ export function VideoPlayer(props: Props) {
 							disabled={props.isUpDisabled}
 							onClick={() => props.onUp()}
 						>
-							上へ
+							上の動画と入れ替え
 						</Button>
 						<Button
 							icon={IconChevronDown}
@@ -94,10 +94,10 @@ export function VideoPlayer(props: Props) {
 							disabled={props.isDownDisabled}
 							onClick={() => props.onDown()}
 						>
-							下へ
+							下の動画と入れ替え
 						</Button>
 						<Button onClick={() => setIsEditing(true)} icon={IconEdit} iconOnly>
-							編集
+							動画を編集
 						</Button>
 					</div>
 				</div>

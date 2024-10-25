@@ -80,7 +80,7 @@ export function VideoPlayerEditForm(props: Props) {
 						variant="warning"
 						onClick={() => props.onDelete(props.metadata.id)}
 					>
-						削除
+						動画を削除
 					</Button>
 				</div>
 				<Button onClick={props.onCancel}>キャンセル</Button>

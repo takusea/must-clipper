@@ -20,14 +20,14 @@ export function PageAttributeEditForm(props: Props) {
 
 	return (
 		<div className="flex flex-col items-stretch">
-			<Label htmlFor="clip-name">クリップ名</Label>
+			<Label htmlFor="clip-name">クリップの名前</Label>
 			<TextField
 				id="clip-name"
 				value={title}
 				onChange={(event) => setTitle(event.target.value)}
 			/>
 			<div className="mt-4">
-				<Label htmlFor="description">クリップの説明</Label>
+				<Label htmlFor="description">クリップの概要</Label>
 			</div>
 			<TextArea
 				id="description"

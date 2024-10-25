@@ -12,8 +12,8 @@ export default defineConfig({
 			includeAssets: ["favicon.png", "apple-touch-icon.png"],
 			injectRegister: "auto",
 			manifest: {
-				name: "ますとくりっぱー",
-				short_name: "ますとくりっぱー",
+				name: "Multi Streaming Clipper",
+				short_name: "MuStClipper",
 				description: "YouTube・Twitch用配信まとめツール",
 				theme_color: "#5eead4",
 				background_color: "#fff",

@@ -7,7 +7,7 @@ export function Header() {
 			<div className="m-auto max-w-screen-lg h-full flex items-center justify-between gap-2 px-4">
 				<a href="/" className="flex gap-1 items-center font-bold">
 					<img className="w-6" src="/icon-128.png" alt="" />
-					ますとくりっぱー
+					MuStClipper
 				</a>
 				<LinkButton icon={IconPlus} href="/" variant="primary">
 					新規作成

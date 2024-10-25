@@ -38,8 +38,8 @@ function App() {
 	useEffect(() => {
 		document.title =
 			pageAttribute.title !== ""
-				? `${pageAttribute.title} - ますとくりっぱー`
-				: "タイトルなし - ますとくりっぱー";
+				? `${pageAttribute.title} - MuStClipper`
+				: "タイトルなし - MuStClipper";
 
 		document
 			.querySelector('meta[name="description"]')

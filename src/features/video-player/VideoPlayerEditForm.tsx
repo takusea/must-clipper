@@ -6,6 +6,10 @@ import type { VideoMetadata } from "../video-metadata/type";
 import { TimeField } from "../../components/TimeField";
 import { Label } from "../../components/Label";
 import { Tooltip } from "../../components/Tooltip";
+import {
+	convertTimeFromSeconds,
+	parseTimeToSeconds,
+} from "../../util/timeFormatter";
 
 type Props = {
 	metadata: VideoMetadata;
@@ -21,31 +25,24 @@ export function VideoPlayerEditForm(props: Props) {
 	const [seconds, setSeconds] = useState(props.metadata.seconds);
 
 	function toDisplayTime(seconds: number) {
-		const hours = Math.floor(seconds / 3600);
-		const minutes = Math.floor((seconds % 3600) / 60);
-		const remainingSeconds = seconds % 60;
+		const time = convertTimeFromSeconds(seconds);
 
-		return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
+		const toPadding = (time: number) => time.toString().padStart(2, "0");
+
+		return `${toPadding(time.hours)}:${toPadding(time.minutes)}:${toPadding(time.seconds)}`;
 	}
 
 	function handleTimeChange(event: ChangeEvent<HTMLInputElement>): void {
-		const arr = event.currentTarget.value.split(":");
-		if (arr.length !== 3) {
+		const seconds = parseTimeToSeconds(
+			event.currentTarget.value,
+			/(\d+):(\d+):(\d+)/,
+		);
+
+		if (!seconds) {
 			return;
 		}
 
-		const hours = Number.parseInt(arr[0], 10) ?? 0;
-		const minutes = Number.parseInt(arr[1], 10);
-		const seconds = Number.parseInt(arr[2], 10);
-
-		const isContainNaN =
-			Number.isNaN(hours) || Number.isNaN(minutes) || Number.isNaN(seconds);
-		const isOvered = minutes >= 60 || seconds >= 60;
-		if (isContainNaN || isOvered) {
-			return;
-		}
-
-		setSeconds(hours * 3600 + minutes * 60 + seconds);
+		setSeconds(seconds);
 	}
 
 	return (

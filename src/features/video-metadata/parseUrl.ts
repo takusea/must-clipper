@@ -50,6 +50,6 @@ export function parseUrlToTwitchMetadata(url: string): VideoMetadata {
 	return {
 		type: "tw",
 		id: match[0].slice(1, match[0].length - 1),
-		seconds: time !== null ? parseTimeToSeconds(time) : 0,
+		seconds: time !== null ? parseTimeToSeconds(time, /(\d+)h(\d+)m(\d+)s/) : 0,
 	};
 }

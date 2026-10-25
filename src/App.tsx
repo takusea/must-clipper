@@ -92,7 +92,7 @@ function App() {
 	}
 
 	return (
-		<div className="text-gray-900 dark:bg-gray-900 dark:text-white">
+		<div className="text-zinc-900 dark:bg-zinc-900 dark:text-white">
 			<Header />
 			<div className="m-auto flex min-h-screen max-w-3xl flex-col gap-8 px-4">
 				<div className="w-full py-4">
@@ -101,7 +101,7 @@ function App() {
 							<div className="flex justify-between gap-1">
 								<h1 className="text-2xl font-bold">
 									{pageAttribute.title || (
-										<span className="text-gray-400 select-none">
+										<span className="text-zinc-400 select-none">
 											タイトルなし
 										</span>
 									)}
@@ -192,7 +192,7 @@ function App() {
 							</DialogContent>
 						</Dialog>
 					</div>
-					<div className="w-full border-t border-gray-500/20 bg-white py-4 dark:bg-gray-900">
+					<div className="w-full border-t border-zinc-500/20 bg-white py-4 dark:bg-zinc-900">
 						<VideoAddForm onAdd={addMetadata} />
 					</div>
 				</div>

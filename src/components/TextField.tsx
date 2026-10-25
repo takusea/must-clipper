@@ -12,7 +12,7 @@ type Props = {
 export function TextField(props: Props) {
 	return (
 		<input
-			className="h-10 grow rounded border border-gray-500/40 bg-white/10 px-2 shadow-inner hover:border-gray-500/60"
+			className="h-10 grow rounded border border-zinc-500/40 bg-white/10 px-2 shadow-inner hover:border-zinc-500/60"
 			type="text"
 			placeholder={props.placeholder}
 			id={props.id}

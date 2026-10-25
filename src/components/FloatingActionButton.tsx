@@ -11,7 +11,7 @@ export function FloatingActionButton(props: Props) {
 	return (
 		<button
 			type="button"
-			className="ml-auto flex h-16 items-center justify-center gap-2 rounded-full border border-gray-500/20 bg-teal-200 px-8 font-semibold text-gray-900 shadow-lg hover:bg-teal-300"
+			className="ml-auto flex h-16 items-center justify-center gap-2 rounded-full border border-zinc-500/20 bg-teal-200 px-8 font-semibold text-zinc-900 shadow-lg hover:bg-teal-300"
 			onClick={props.onClick}
 		>
 			{props.icon && <props.icon />}

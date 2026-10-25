@@ -73,10 +73,10 @@ export function VideoPlayer(props: Props) {
 			{videoIframe()}
 			{!isEditing ? (
 				<div className="flex flex-wrap items-center gap-2">
-					<span className="shrink-0 text-gray-400">{icon}</span>
+					<span className="shrink-0 text-zinc-400">{icon}</span>
 					<h2 className="grow text-lg font-semibold">
 						{props.metadata.title || (
-							<span className="text-gray-400 select-none">タイトルなし</span>
+							<span className="text-zinc-400 select-none">タイトルなし</span>
 						)}
 					</h2>
 					<div className="ml-auto flex items-center gap-2">

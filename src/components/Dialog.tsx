@@ -15,7 +15,7 @@ export const DialogContent = (props: Props) => (
 			className="fixed inset-0 m-4 grid place-content-center"
 			{...props}
 		>
-			<div className="relative overflow-hidden rounded-2xl border border-gray-500/20 bg-white p-4 dark:bg-gray-900 dark:text-white">
+			<div className="relative overflow-hidden rounded-2xl border border-zinc-500/20 bg-white p-4 dark:bg-zinc-900 dark:text-white">
 				<header className="mb-2 flex items-center justify-between gap-1">
 					<DialogPrimitive.DialogTitle className="text-lg font-bold">
 						{props.title}

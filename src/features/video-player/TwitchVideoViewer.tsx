@@ -1,6 +1,6 @@
 import { TwitchPlayer, type TwitchPlayerInstance } from "react-twitch-embed";
-import type { VideoMetadata } from "../video-metadata/type";
 import { convertTimeFromSeconds } from "../../util/timeFormatter";
+import type { VideoMetadata } from "../video-metadata/type";
 
 type Props = {
 	metadata: VideoMetadata;
@@ -21,7 +21,7 @@ export function TwitchVideoViewer(props: Props) {
 
 	return (
 		<TwitchPlayer
-			className="aspect-video rounded-lg overflow-hidden"
+			className="aspect-video overflow-hidden rounded-lg"
 			video={props.metadata.id}
 			time={`${time.hours}h${time.minutes}m${time.seconds}s`}
 			width={"100%"}

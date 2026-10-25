@@ -10,7 +10,7 @@ type Props = {
 export function TextArea(props: Props) {
 	return (
 		<textarea
-			className="bg-white/10 border border-gray-500/40 hover:border-gray-500/60 h-10 rounded flex-grow px-2 shadow-inner resize-y min-h-32"
+			className="h-10 min-h-32 grow resize-y rounded border border-gray-500/40 bg-white/10 px-2 shadow-inner hover:border-gray-500/60"
 			placeholder={props.placeholder}
 			id={props.id}
 			value={props.value}

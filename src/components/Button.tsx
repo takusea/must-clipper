@@ -1,10 +1,5 @@
-import type { Icon, IconProps } from "@tabler/icons-react";
-import {
-	useMemo,
-	type ForwardRefExoticComponent,
-	type MouseEventHandler,
-	type RefAttributes,
-} from "react";
+import type { Icon } from "@tabler/icons-react";
+import { type MouseEventHandler, useMemo } from "react";
 import { Tooltip } from "./Tooltip";
 
 type Props = {
@@ -12,7 +7,7 @@ type Props = {
 	variant?: "primary" | "default" | "warning";
 	disabled?: boolean;
 	iconOnly?: boolean;
-	icon?: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
+	icon?: Icon;
 	onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
@@ -31,7 +26,7 @@ export function Button(props: Props) {
 	const button = (
 		<button
 			type="button"
-			className={`font-semibold h-10 min-w-10 rounded justify-center flex gap-1 items-center disabled:opacity-50 ${color} ${!props.iconOnly && "px-3"}`}
+			className={`flex h-10 min-w-10 items-center justify-center gap-1 rounded font-semibold disabled:opacity-50 ${color} ${!props.iconOnly && "px-3"}`}
 			onClick={props.onClick}
 			disabled={props.disabled}
 			{...(props.iconOnly && { "aria-label": props.children })}

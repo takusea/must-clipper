@@ -12,7 +12,7 @@ type Props = {
 export function TimeField(props: Props) {
 	return (
 		<input
-			className="bg-white/10 border border-gray-500/40 hover:border-gray-500/60 h-10 rounded flex-grow px-2 shadow-inner"
+			className="h-10 grow rounded border border-gray-500/40 bg-white/10 px-2 shadow-inner hover:border-gray-500/60"
 			type="time"
 			step={1}
 			max={props.max}

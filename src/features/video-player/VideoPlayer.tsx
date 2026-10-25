@@ -1,7 +1,3 @@
-import { useMemo, useState } from "react";
-import type { VideoMetadata } from "../video-metadata/type";
-import { VideoPlayerEditForm } from "./VideoPlayerEditForm";
-import { Button } from "../../components/Button";
 import {
 	IconBrandTwitch,
 	IconBrandYoutube,
@@ -9,7 +5,11 @@ import {
 	IconChevronUp,
 	IconEdit,
 } from "@tabler/icons-react";
+import { useMemo, useState } from "react";
+import { Button } from "../../components/Button";
+import type { VideoMetadata } from "../video-metadata/type";
 import { TwitchVideoViewer } from "./TwitchVideoViewer";
+import { VideoPlayerEditForm } from "./VideoPlayerEditForm";
 import { YouTubeVideoViewer } from "./YouTubeVideoViewer";
 
 type Props = {
@@ -26,7 +26,7 @@ export function VideoPlayer(props: Props) {
 	const [isEditing, setIsEditing] = useState(false);
 	const [currentTime, setCurrentTime] = useState(props.metadata.seconds);
 
-	const videoIframe = useMemo(() => {
+	const videoIframe = () => {
 		switch (props.metadata.type) {
 			case "yt":
 				return (
@@ -43,7 +43,7 @@ export function VideoPlayer(props: Props) {
 					/>
 				);
 		}
-	}, [props.metadata]);
+	};
 
 	const icon = useMemo(() => {
 		switch (props.metadata.type) {
@@ -70,16 +70,16 @@ export function VideoPlayer(props: Props) {
 
 	return (
 		<div className="flex flex-col gap-2">
-			{videoIframe}
+			{videoIframe()}
 			{!isEditing ? (
-				<div className="flex gap-2 items-center flex-wrap">
-					<span className="text-gray-400 flex-shrink-0">{icon}</span>
-					<h2 className="flex-grow text-lg font-semibold">
+				<div className="flex flex-wrap items-center gap-2">
+					<span className="shrink-0 text-gray-400">{icon}</span>
+					<h2 className="grow text-lg font-semibold">
 						{props.metadata.title || (
 							<span className="text-gray-400 select-none">タイトルなし</span>
 						)}
 					</h2>
-					<div className="flex gap-2 items-center ml-auto">
+					<div className="ml-auto flex items-center gap-2">
 						<Button
 							icon={IconChevronUp}
 							iconOnly

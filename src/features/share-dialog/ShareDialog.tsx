@@ -1,10 +1,10 @@
-import { Dialog, DialogTrigger, DialogContent } from "@radix-ui/react-dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
 import {
-	IconShare,
-	IconCopy,
-	IconBrandX,
 	IconBrandInstagram,
 	IconBrandLine,
+	IconBrandX,
+	IconCopy,
+	IconShare,
 } from "@tabler/icons-react";
 import { Button } from "../../components/Button";
 import { FloatingActionButton } from "../../components/FloatingActionButton";

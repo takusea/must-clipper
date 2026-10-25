@@ -1,10 +1,10 @@
-import { useState } from "react";
-import type { PageAttribute } from "./type";
-import { TextField } from "../../components/TextField";
-import { Button } from "../../components/Button";
-import { TextArea } from "../../components/TextArea";
 import { IconCheck } from "@tabler/icons-react";
+import { useState } from "react";
+import { Button } from "../../components/Button";
 import { Label } from "../../components/Label";
+import { TextArea } from "../../components/TextArea";
+import { TextField } from "../../components/TextField";
+import type { PageAttribute } from "./type";
 
 type Props = {
 	attr: PageAttribute;
@@ -34,7 +34,7 @@ export function PageAttributeEditForm(props: Props) {
 				value={description}
 				onChange={(event) => setDescription(event.target.value)}
 			/>
-			<div className="ml-auto flex gap-2 mt-4">
+			<div className="mt-4 ml-auto flex gap-2">
 				<Button onClick={props.onCancel}>キャンセル</Button>
 				<Button
 					variant="primary"

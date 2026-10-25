@@ -38,7 +38,7 @@ export function parseUrlToTwitchMetadata(url: string): VideoMetadata {
 	const query = url.split("?")[1];
 	const params = new URLSearchParams(query);
 
-	const regex = /\/([^\/?]+)\?/;
+	const regex = /\/([^/?]+)\?/;
 	const match = url.match(regex);
 
 	const time = params.get("t");

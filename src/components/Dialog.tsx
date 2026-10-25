@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { IconX } from "@tabler/icons-react";
+import type { ReactNode } from "react";
 import { Button } from "./Button";
 
 type Props = {
@@ -15,8 +15,8 @@ export const DialogContent = (props: Props) => (
 			className="fixed inset-0 m-4 grid place-content-center"
 			{...props}
 		>
-			<div className="relative bg-white dark:text-white dark:bg-gray-900 border border-gray-500/20 p-4 rounded-2xl overflow-hidden">
-				<header className="flex gap-1 items-center justify-between mb-2">
+			<div className="relative overflow-hidden rounded-2xl border border-gray-500/20 bg-white p-4 dark:bg-gray-900 dark:text-white">
+				<header className="mb-2 flex items-center justify-between gap-1">
 					<DialogPrimitive.DialogTitle className="text-lg font-bold">
 						{props.title}
 					</DialogPrimitive.DialogTitle>

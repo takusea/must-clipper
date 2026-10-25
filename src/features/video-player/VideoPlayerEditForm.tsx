@@ -1,15 +1,15 @@
-import { type ChangeEvent, useState } from "react";
 import { IconCheck, IconClock, IconTrash } from "@tabler/icons-react";
+import { type ChangeEvent, useState } from "react";
 import { Button } from "../../components/Button";
-import { TextField } from "../../components/TextField";
-import type { VideoMetadata } from "../video-metadata/type";
-import { TimeField } from "../../components/TimeField";
 import { Label } from "../../components/Label";
+import { TextField } from "../../components/TextField";
+import { TimeField } from "../../components/TimeField";
 import { Tooltip } from "../../components/Tooltip";
 import {
 	convertTimeFromSeconds,
 	parseTimeToSeconds,
 } from "../../util/timeFormatter";
+import type { VideoMetadata } from "../video-metadata/type";
 
 type Props = {
 	metadata: VideoMetadata;
@@ -47,14 +47,14 @@ export function VideoPlayerEditForm(props: Props) {
 
 	return (
 		<div className="flex flex-col gap-2">
-			<div className="flex gap-2 items-center">
+			<div className="flex items-center gap-2">
 				<TextField
 					value={title}
 					placeholder="タイトルなし"
 					onChange={(event) => setTitle(event.target.value)}
 				/>
 			</div>
-			<div className="flex-grow flex items-center gap-2">
+			<div className="flex grow items-center gap-2">
 				<Label htmlFor={`seconds-${id}`}>
 					<Tooltip content="開始位置">
 						<IconClock />
@@ -69,8 +69,8 @@ export function VideoPlayerEditForm(props: Props) {
 					{`${toDisplayTime(props.currentTime)}に設定`}
 				</Button>
 			</div>
-			<div className="flex-grow flex items-center gap-2 w-full">
-				<div className="flex-grow">
+			<div className="flex w-full grow items-center gap-2">
+				<div className="grow">
 					<Button
 						icon={IconTrash}
 						iconOnly

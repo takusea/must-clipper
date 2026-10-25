@@ -1,14 +1,14 @@
+import { IconLink, IconPlus } from "@tabler/icons-react";
 import { useState } from "react";
-import type { VideoMetadata } from "./type";
+import { Button } from "../../components/Button";
+import { Label } from "../../components/Label";
+import { TextField } from "../../components/TextField";
+import { Tooltip } from "../../components/Tooltip";
 import {
 	parseUrlToTwitchMetadata,
 	parseUrlToYouTubeMetadata,
 } from "./parseUrl";
-import { TextField } from "../../components/TextField";
-import { Button } from "../../components/Button";
-import { IconLink, IconPlus } from "@tabler/icons-react";
-import { Label } from "../../components/Label";
-import { Tooltip } from "../../components/Tooltip";
+import type { VideoMetadata } from "./type";
 
 type Props = {
 	onAdd: (metadata: VideoMetadata) => void;
@@ -31,7 +31,7 @@ export function VideoAddForm(props: Props) {
 	};
 
 	return (
-		<div className="flex gap-2 items-center">
+		<div className="flex items-center gap-2">
 			<Label htmlFor="add-url">
 				<Tooltip content="URL">
 					<IconLink />

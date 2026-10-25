@@ -1,11 +1,3 @@
-import { useEffect, useMemo, useState } from "react";
-import { VideoAddForm } from "./features/video-metadata/VideoAddForm";
-import { PageAttributeEditForm } from "./features/page-attribute/PageAttributeEditForm";
-import { useVideoMetadatas } from "./features/video-metadata/useVideoMetadatas";
-import { VideoPlayer } from "./features/video-player/VideoPlayer";
-import { Button } from "./components/Button";
-import type { PageAttribute } from "./features/page-attribute/type";
-import { FloatingActionButton } from "./components/FloatingActionButton";
 import {
 	IconBrandFacebook,
 	IconBrandLine,
@@ -15,12 +7,20 @@ import {
 	IconEdit,
 	IconShare,
 } from "@tabler/icons-react";
-import { usePageAttributes } from "./features/page-attribute/usePageAttribute";
+import { useEffect, useMemo, useState } from "react";
+import { Button } from "./components/Button";
 import { Dialog, DialogContent, DialogTrigger } from "./components/Dialog";
-import { TextField } from "./components/TextField";
+import { FloatingActionButton } from "./components/FloatingActionButton";
 import { LinkButton } from "./components/LinkButton";
-import { Header } from "./layouts/Header";
+import { TextField } from "./components/TextField";
+import { PageAttributeEditForm } from "./features/page-attribute/PageAttributeEditForm";
+import type { PageAttribute } from "./features/page-attribute/type";
+import { usePageAttributes } from "./features/page-attribute/usePageAttribute";
+import { useVideoMetadatas } from "./features/video-metadata/useVideoMetadatas";
+import { VideoAddForm } from "./features/video-metadata/VideoAddForm";
+import { VideoPlayer } from "./features/video-player/VideoPlayer";
 import { Footer } from "./layouts/Footer";
+import { Header } from "./layouts/Header";
 
 function App() {
 	const {
@@ -79,7 +79,7 @@ function App() {
 			});
 			console.log("successed");
 		} catch (err) {
-			console.log("failed");
+			console.log("failed", err);
 		}
 	}
 
@@ -92,13 +92,13 @@ function App() {
 	}
 
 	return (
-		<div className="text-gray-900 dark:text-white dark:bg-gray-900">
+		<div className="text-gray-900 dark:bg-gray-900 dark:text-white">
 			<Header />
-			<div className="max-w-screen-md min-h-screen m-auto flex flex-col gap-8 px-4">
+			<div className="m-auto flex min-h-screen max-w-3xl flex-col gap-8 px-4">
 				<div className="w-full py-4">
 					{!isEditing ? (
 						<div className="flex flex-col gap-2">
-							<div className="flex gap-1 justify-between">
+							<div className="flex justify-between gap-1">
 								<h1 className="text-2xl font-bold">
 									{pageAttribute.title || (
 										<span className="text-gray-400 select-none">
@@ -124,7 +124,7 @@ function App() {
 						/>
 					)}
 				</div>
-				<div className="flex flex-col gap-8 mb-auto">
+				<div className="mb-auto flex flex-col gap-8">
 					{videoMetadatas.map((metadata, index) => (
 						<VideoPlayer
 							key={metadata.id}
@@ -138,7 +138,7 @@ function App() {
 						/>
 					))}
 				</div>
-				<div className="sticky bottom-0 flex flex-col gap-4 justify-end mt-16">
+				<div className="sticky bottom-0 mt-16 flex flex-col justify-end gap-4">
 					<div className="absolute right-0 bottom-full mb-4">
 						<Dialog>
 							<DialogTrigger>
@@ -192,7 +192,7 @@ function App() {
 							</DialogContent>
 						</Dialog>
 					</div>
-					<div className="w-full bg-white dark:bg-gray-900 border-t border-gray-500/20 py-4">
+					<div className="w-full border-t border-gray-500/20 bg-white py-4 dark:bg-gray-900">
 						<VideoAddForm onAdd={addMetadata} />
 					</div>
 				</div>

@@ -11,7 +11,7 @@ export function useVideoMetadatas() {
 		const params = new URLSearchParams(query);
 
 		const metadatas: VideoMetadata[] = Array.from(params)
-			.filter(([key, _]) => !Number.isNaN(Number.parseInt(key)))
+			.filter(([key, _]) => !Number.isNaN(key))
 			.map(([_, value]) => {
 				const arr = value.split(".");
 				return {

@@ -6,7 +6,7 @@
 		"useIgnoreFile": false
 	},
 	"files": {
-		"ignoreUnknown": false,
+		"ignoreUnknown": false
 	},
 	"formatter": {
 		"enabled": true,
@@ -15,12 +15,26 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"preset": "recommended",
+			"nursery": {
+				"useTailwindSortedClasses": {
+					"level": "error",
+					"fix": "safe"
+				}
+			}
 		}
 	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "double"
 		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"tailwind": {
+		"stylesheet": "src/main.css"
 	}
 }
